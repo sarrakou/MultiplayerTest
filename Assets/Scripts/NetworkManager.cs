@@ -29,7 +29,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks , IInRoomCallbacks
     public override void OnJoinedRoom()
     {
         Vector3 spawnPos = new Vector3(Random.Range(-5f, 5f), 0, Random.Range(-5f, 5f));
-        PhotonNetwork.Instantiate(playerPrefab.name, spawnPos, Quaternion.identity).GetPhotonView();
+        PhotonNetwork.Instantiate(playerPrefab.name, spawnPos, Quaternion.identity).GetComponent<PlayerController>().isLocalPlayer = true;
     }
     
     public override void OnPlayerEnteredRoom(Player newPlayer)
